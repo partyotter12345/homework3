@@ -1,48 +1,29 @@
 #savings.py
 #HMWK_3
 
-#initbalance = float(input("What is your initial balance?")
-#annpercent = float(input("What is your annual percentage for interest as a decimal, like .04 for 4%")
-#finalbalancewant = float(input("What is the final balance you desire?"))
 
 
-import pygame
-import sys
-pygame.init()
+initial_balance = float(input("Enter the initial balance: "))
+interest_rate = float(input("Enter the annual interest rate (as a decimal): "))
+final_balance = float(input("Enter the final balance desired: "))
 
-# set window size
-size = width, height = 640, 480
 
-# set window caption
-pygame.display.set_caption("Cat Moves with Mouse")
+print(f"Initial balance: {round(initial_balance, 2)}")
 
-# set window background color
-screen = pygame.display.set_mode(size)
-bg = (20, 20, 20)
 
-# set cat image
-catImg = pygame.image.load('cat.png')
-catx = 320
-caty = 240
-direction = 0
+balance = initial_balance
 
-while True:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            sys.exit()
 
-    # get mouse position
-    mx, my = pygame.mouse.get_pos()
+num_years = 0
 
-    # move the cat
-    if mx > catx:
-        catx += 1
-    if mx < catx:
-        catx -= 1
-    if my > caty:
-        caty += 1
-    if my < caty:
-        caty -= 1
 
-    # draw background
-    screen.fill(bg)
+while balance < final_balance:
+    
+    balance = balance * (1 + interest_rate)
+    num_years += 1
+
+    
+    print(f"After {num_years} year(s), the balance is {round(balance, 2)}")
+
+
+print(f"Final balance: {round(balance, 2)}")
